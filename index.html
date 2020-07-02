@@ -45,9 +45,14 @@
 			let ctx = cv.getContext('2d');
 			
 			let imgFace = new Image();
-			imgFace.src = 'img/Face.png'
+			imgFace.src = 'img/face.png';
+			setTimeout(()=>{
 
-			
+				ctx.drawImage(img.Face, 0 ,0);
+
+			},100);
+
+
 		</script>
 	</body>
 </html>
