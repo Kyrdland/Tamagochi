@@ -7,7 +7,6 @@
 			{
 				width: 500px;
 				height: 500px;
-				border: 1px solid black;
 			}
 		</style>
 	</head>
@@ -44,6 +43,13 @@
 			let cv = document.getElementById('canvas');
 			let ctx = cv.getContext('2d');
 			
+			let imgFace = new Image();
+			imgFace.src = 'img/face.png';
+
+			setTimeout(() =>
+			{
+				ctx.drawImage(imgFace, 0, 0);
+			}, 100);
 		</script>
 	</body>
 </html>
