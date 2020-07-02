@@ -7,7 +7,6 @@
 			{
 				width: 500px;
 				height: 500px;
-				border: 1px solid black;
 			}
 		</style>
 	</head>
@@ -44,15 +43,57 @@
 			let cv = document.getElementById('canvas');
 			let ctx = cv.getContext('2d');
 			
-			let imgFace = new Image();
-			imgFace.src = 'img/face.png';
-			setTimeout(()=>{
+			let face = new Image();
+			face.src = 'img/face.png';
 
-				ctx.drawImage(img.Face, 0 ,0);
-
-			},100);
+			let eBored = new Image();
+			eBored.src = 'img/eyes-bored.png';
 
 
+			let eExcited = new Image();
+			eExcited.src = 'img/eyes-excited.png';
+
+
+			let eHappy = new Image();
+			eHappy.src = 'img/eyes-happy.png';
+
+
+			let eTired = new Image();
+			eTired.src = 'img/eyes-tired.png';
+
+
+			let mBored = new Image();
+			mBored.src = 'img/mouse-bored.png';
+
+			
+			let mExited = new Image();
+			mExited.src = 'img/mouse-excited.png';
+
+			
+			let mHappy = new Image();
+			mHappy.src = 'img/mouse-happy.png';
+
+			
+			let mHungry = new Image();
+			mHungry.src = 'img/mouse-hungry.png';
+
+			
+			let thermometer = new Image();
+			thermometer.src = 'img/thermometer.png';
+
+			setTimeout(() =>
+			{
+				ctx.drawImage(face, 0, 0);
+				ctx.drawImage(eBored, 0, 0);
+				ctx.drawImage(eExcited, 0, 0);
+				ctx.drawImage(eHappy, 0, 0);
+				ctx.drawImage(eTired, 0, 0);
+				ctx.drawImage(mBored, 0, 0);
+				ctx.drawImage(mExited, 0, 0);
+				ctx.drawImage(mHappy, 0, 0);
+				ctx.drawImage(mHungry, 0, 0);
+				ctx.drawImage(thermometer, 0, 0);
+			}, 100);
 		</script>
 	</body>
 </html>
