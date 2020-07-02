@@ -30,10 +30,11 @@
 				</progress>
 			</li>
 		</ul>
-		<canvas id="canvas" wdith="500" height="500">
+		<canvas id="canvas" width="1000" height="1000">
 			
 		</canvas>
 		<br>
+
 		<button>Comersela</button>
 		<button>juguetear</button>
 		<button>vladimir</button>
@@ -41,7 +42,16 @@
 		<script type="text/javascript">
 			let cv = document.getElementById('canvas');
 			let ctx = cv.getContext('2d');
-			
+			let imgFace = new Image();
+			imgFace.src = 'img/face.png';
+			let imgFace2 = new Image();
+			imgFace2.src = 'img/kemonito.png';
+			setTimeout(() =>
+			{
+				ctx.drawImage(imgFace, 0, 0);
+				
+				ctx.drawImage(imgFace2,0 ,0);
+			},100);
 		</script>
 	</body>
 </html>
