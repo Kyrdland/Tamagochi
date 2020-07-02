@@ -5,6 +5,8 @@
 		<style type="text/css">
 			canvas
 			{
+				width: 500px;
+				height: 500px;
 				border: 1px solid black;
 			}
 		</style>
@@ -32,11 +34,16 @@
 				</progress>
 			</li>
 		</ul>
-		<canvas width="500" height="500"></canvas>
+		<canvas id="canvas" width="1000" height="1000"></canvas>
 		<br>
 		<button>COMER</button>
 		<button>JUGAR</button>
 		<button>DORMIR</button>
 		<button>CURAR</button>
+		<script type="text/javascript">
+			let cv = document.getElementById('canvas');
+			let ctx = cv.getContext('2d');
+			
+		</script>
 	</body>
 </html>
