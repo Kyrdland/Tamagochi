@@ -14,22 +14,22 @@
 		<ul>
 			<li>
 				<p>HAMBRE</p>
-				<progress value="30" max="100">
+				<progress id="bpHungry" value="30" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>SALUD</p>
-				<progress value="30" max="100">
+				<progress id="bpHealth" value="30" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>ANIMO</p>
-				<progress value="30" max="100">
+				<progress id="bpFun" value="30" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>ENERGIA</p>
-				<progress value="30" max="100">
+				<progress id="bpEnergy" value="30" max="100">
 				</progress>
 			</li>
 		</ul>
@@ -95,6 +95,13 @@
 				requestAnimationFrame(loop);
 			}
 
+			let bpHungry = document.getElementById('bpHungry');
+			let bpHealth = document.getElementById('bpHealth');
+			let bpFun = document.getElementById('bpFun');
+			let bpEnergy = document.getElementById('bpEnergy');
+
+			bpFun.value = 10;
+
 			let hungry = 100;
 			let health = 100;
 			let fun = 100;
@@ -111,6 +118,21 @@
 				{
 					ctx.drawImage(eExcited, 0, 0);
 					ctx.drawImage(mExited, 0, 0);
+				}
+				else
+				{
+					if(energy <= 50)
+					{
+						ctx.drawImage(eTired, 0, 0);
+					}
+					else if(fun <= 50)
+					{
+						ctx.drawImage(eBored, 0, 0);
+					}
+					else
+					{
+						ctx.drawImage(eHappy, 0, 0);
+					}
 				}
 			}
 		</script>
