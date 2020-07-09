@@ -14,31 +14,31 @@
 		<ul>
 			<li>
 				<p>HAMBRE</p>
-				<progress value="30" max="100">
+				<progress id="bgHungry" value="100" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>SALUD</p>
-				<progress value="30" max="100">
+				<progress id="bgHealth" value="100" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>ANIMO</p>
-				<progress value="30" max="100">
+				<progress id="bgFun" value="100" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>ENERGIA</p>
-				<progress value="30" max="100">
+				<progress id="bgEnergy" value="100" max="100">
 				</progress>
 			</li>
 		</ul>
 		<canvas id="canvas" width="1000" height="1000"></canvas>
 		<br>
-		<button>COMER</button>
-		<button>JUGAR</button>
-		<button>DORMIR</button>
-		<button>CURAR</button>
+		<button id= "eat">COMER</button>
+		<button id= "play">JUGAR</button>
+		<button id= "sleep">DORMIR</button>
+		<button id= "heal">CURAR</button>
 		<script type="text/javascript">
 			let cv = document.getElementById('canvas');
 			let ctx = cv.getContext('2d');
@@ -81,6 +81,18 @@
 			let thermometer = new Image();
 			thermometer.src = 'img/thermometer.png';
 
+			let bgHundry = document.getElementById("bgHungry");
+			let bgHealth = document.getElementById("bgHealth");
+			let bgFun = document.getElementById("bgFun");
+			let bgEnergy = document.getElementById("bgEnergy");
+
+			bgFun.value=10;
+
+			let hungry = 100;
+			let health = 100;
+			let energy = 100;
+			let fun = 100;
+			
 			setTimeout(() =>
 			{
 				ctx.drawImage(face, 0, 0);
@@ -91,10 +103,142 @@
 
 			function loop(timestamp)
 			{
-				console.log(Math.floor(timestamp) % 10);
+				if(Math.floor(timestamp/(1000/60))%25 == 0){
+					hungry = hungry > 0 ? hungry - 2: 0;
+					health = health > 0 ? health - 1: 0;
+					fun = fun > 0 ? fun - 1: 0;
+					energy = energy > 0 ? energy - 3: 0;
+				}
+				update();
+				// draw();
 				requestAnimationFrame(loop);
 			}
 
+			function update(){
+				//Susana distancia
+				bgHundry.value = hungry;
+				bgHealth.value = health;
+				bgFun.value = fun;
+				bgEnergy.value = energy;
+
+				cv.width = cv.width;
+				cv.height = cv.height;
+
+				ctx.drawImage(face, 0, 0);
+
+				if(hungry == 100 && health == 100 && fun == 100 && energy == 100){
+					ctx.drawImage(eExcited, 0 ,0);
+					ctx.drawImage(mExited, 0 ,0);
+				}
+				else
+				{
+					if(energy <= 50)
+					{
+						ctx.drawImage(eTired, 0 ,0);
+					}
+					else if(fun <= 50)
+					{
+						ctx.drawImage(eBored, 0, 0);
+					}
+					else
+					{
+						ctx.drawImage(eHappy, 0 ,0);
+					}
+					if(hungry<=50)
+					{
+						ctx.drawImage(mHungry, 0, 0);
+					}
+					else if(fun <= 50)
+					{
+						ctx.drawImage(mBored, 0 ,0);
+					}
+					else
+					{
+						ctx.drawImage(mHappy, 0, 0);
+					}
+					if(health <= 50)
+					{
+						ctx.drawImage(thermometer, 0, 0);
+					}
+				}
+			}
+
+			function draw(){
+				cv.height = cv.height;
+				cv.width = cv.width;
+				cv.drawImage(face,0,0)
+			}
+
+			let eat = document.getElementById("eat");
+			eat.addEventListener('click',() => {
+				if(hungry < 100)
+				{
+					hungry+=10;
+					health+= 2;
+					fun = 100:
+					energy +=3;
+					eat.setAttribute('disable', '');
+					setTimeout(() => {
+						eat.removeAttribute('disable');
+					},5000)
+				}
+			},false)
+
+			let play = document.getElementById("play");
+			play.addEventListener('click',() => {
+				if(fun < 100){
+					fun +=10;
+					health += 3;
+					play.setAttribute('disable', '');
+					setTimeout(() => {
+						play.removeAttribute('disable');
+					},5000);
+				};
+			},false)	
+
+			let sleep = document.getElementById("sleep");
+			sleep.addEventListener('click',() => {
+				if(energy < 100)
+				{
+					energy += 10;
+					health+= 1;
+					fun += 2;:
+					sleep.setAttribute('disable', '');
+					setTimeout(() => {
+						sleep.removeAttribute('disable');
+					},5000)
+				};
+			},false);	
+			
+			let heal = document.getElementById("heal");
+			heal.addEventListener('click',() => {
+				if(health < 100)
+				{
+					health += 10;
+					fun += 1;
+					energy += 2;:
+					heal.setAttribute('disable', '');
+					setTimeout(() => {
+						heal.removeAttribute('disable');
+					},5000)
+				};
+			},false);	
+			
+			let sleep = document.getElementById("sleep");
+			sleep.addEventListener('click',() => {
+				if(energy < 100)
+				{
+					energy += 10;
+					health+= 1;
+					fun += 2;:
+					sleep.setAttribute('disable', '');
+					setTimeout(() => {
+						sleep.removeAttribute('disable');
+					},5000)
+				};
+			},false);	
+			
+			
 
 		</script>
 	</body>
