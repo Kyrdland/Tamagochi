@@ -14,22 +14,22 @@
 		<ul>
 			<li>
 				<p>HAMBRE</p>
-				<progress id="bpHungry" value="30" max="100">
+				<progress id="bpHungry" value="100" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>SALUD</p>
-				<progress id="bpHealth" value="30" max="100">
+				<progress id="bpHealth" value="100" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>ANIMO</p>
-				<progress id="bpFun" value="30" max="100">
+				<progress id="bpFun" value="100" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>ENERGIA</p>
-				<progress id="bpEnergy" value="30" max="100">
+				<progress id="bpEnergy" value="100" max="100">
 				</progress>
 			</li>
 		</ul>
@@ -42,6 +42,16 @@
 		<script type="text/javascript">
 			let cv = document.getElementById('canvas');
 			let ctx = cv.getContext('2d');
+
+			let bpHungry = document.getElementById('bpHungry');
+			let bpHealth = document.getElementById('bpHealth');
+			let bpFun = document.getElementById('bpFun');
+			let bpEnergy = document.getElementById('bpEnergy');
+
+			let hungry = 100;
+			let health = 100;
+			let fun = 100;
+			let energy = 100;
 			
 			let face = new Image();
 			face.src = 'img/face.png';
@@ -91,24 +101,27 @@
 
 			function loop(timestamp)
 			{
+				if(Math.floor(timestamp / (1000 / 60)) % 25 == 0)
+				{
+					hungry = hungry > 0 ? hungry - 1 : 0;
+					health = health > 0 ? health - 1 : 0;
+					fun = fun > 0 ? fun - 1 : 0;
+					energy = energy > 0 ? energy - 1 : 0;
+				}
+
 				update();
 				requestAnimationFrame(loop);
 			}
 
-			let bpHungry = document.getElementById('bpHungry');
-			let bpHealth = document.getElementById('bpHealth');
-			let bpFun = document.getElementById('bpFun');
-			let bpEnergy = document.getElementById('bpEnergy');
-
 			bpFun.value = 10;
-
-			let hungry = 100;
-			let health = 100;
-			let fun = 100;
-			let energy = 100;
 
 			function update()
 			{
+				bpHungry.value = hungry;
+				bpHealth.value = health;
+				bpFun.value = fun;
+				bpEnergy.value = energy;
+
 				cv.width = cv.width;
 				cv.height = cv.height;
 
