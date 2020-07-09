@@ -80,11 +80,17 @@
 			let thermometer = new Image();
 			thermometer.src = 'img/thermometer.png';
 
-			setTimeout(() =>
-			{
+			setTimeout(() => {
 				ctx.drawImage(face, 0, 0);
-				ctx.drawImage(eBored, 0, 0);
+				ctx.drawImage(eExcited, 0, 0);
+				ctx.drawImage(mExited,0, 0);
 			}, 100);
+
+			const loop = timestamp => {
+				console.log(Math.floor(timestamp) % 10);
+				requestAnimationFrame(loop);
+			}
+			
 		</script>
 	</body>
 </html>
