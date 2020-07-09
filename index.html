@@ -13,85 +13,31 @@
 		<ul>
 			<li>
 				<p>HAMBRE</p>
-				<progress value="30" max="100">
+				<progress id="bpHungry" value="30" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>SALUD</p>
-				<progress value="30" max="100">
+				<progress id="bpHealth" value="30" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>ANIMO</p>
-				<progress value="30" max="100">
+				<progress id="bpFun" value="30" max="100">
 				</progress>
 			</li>
 			<li>
 				<p>ENERGIA</p>
-				<progress value="30" max="100">
+				<progress id="bpEnergy" value="30" max="100">
 				</progress>
 			</li>
 		</ul>
 		<canvas id="canvas" width="1000" height="1000"></canvas>
 		<br>
-		<button>COMER</button>
-		<button>JUGAR</button>
-		<button>DORMIR</button>
-		<button>CURAR</button>
-		<script type="text/javascript">
-			let cv = document.getElementById('canvas');
-			let ctx = cv.getContext('2d');
-			
-			let face = new Image();
-			face.src = 'img/face.png';
-
-			let eBored = new Image();
-			eBored.src = 'img/eyes-bored.png';
-
-
-			let eExcited = new Image();
-			eExcited.src = 'img/eyes-excited.png';
-
-
-			let eHappy = new Image();
-			eHappy.src = 'img/eyes-happy.png';
-
-
-			let eTired = new Image();
-			eTired.src = 'img/eyes-tired.png';
-
-
-			let mBored = new Image();
-			mBored.src = 'img/mouse-bored.png';
-
-			
-			let mExited = new Image();
-			mExited.src = 'img/mouse-excited.png';
-
-			
-			let mHappy = new Image();
-			mHappy.src = 'img/mouse-happy.png';
-
-			
-			let mHungry = new Image();
-			mHungry.src = 'img/mouse-hungry.png';
-
-			
-			let thermometer = new Image();
-			thermometer.src = 'img/thermometer.png';
-
-			setTimeout(() => {
-				ctx.drawImage(face, 0, 0);
-				ctx.drawImage(eExcited, 0, 0);
-				ctx.drawImage(mExited,0, 0);
-				loop();
-			}, 100);
-
-			const loop = timestamp => {
-				console.log(Math.floor(timestamp) % 10);
-				requestAnimationFrame(loop);
-			}
-
-		</script>
+		<button id="btnEat">COMER</button>
+		<button id="btnPlay">JUGAR</button>
+		<button id="btnSleep">DORMIR</button>
+		<button id="btnHeal">CURAR</button>
+		<script src="main.js"></script>
 	</body>
 </html>
