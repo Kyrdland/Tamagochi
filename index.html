@@ -91,6 +91,9 @@
 			let thermometer = new Image();
 			thermometer.src = 'img/thermometer.png';
 
+			let dead = new Image();
+			dead.src = 'img/dead.png';
+
 			setTimeout(() =>
 			{
 				ctx.drawImage(face, 0, 0);
@@ -131,6 +134,10 @@
 				{
 					ctx.drawImage(eExcited, 0, 0);
 					ctx.drawImage(mExited, 0, 0);
+				}
+				else if(hungry == 0 && health == 0 && fun == 0 && energy == 0)
+				{
+					ctx.drawImage(dead, 0, 0);
 				}
 				else
 				{
