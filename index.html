@@ -35,10 +35,10 @@
 		</ul>
 		<canvas id="canvas" width="1000" height="1000"></canvas>
 		<br>
-		<button>COMER</button>
-		<button>JUGAR</button>
-		<button>DORMIR</button>
-		<button>CURAR</button>
+		<button id="eat">COMER</button>
+		<button id="play">JUGAR</button>
+		<button id="sleep">DORMIR</button>
+		<button id="heal">CURAR</button>
 		<script type="text/javascript">
 			let cv = document.getElementById('canvas');
 			let ctx = cv.getContext('2d');
@@ -106,10 +106,10 @@
 			{
 				if(Math.floor(timestamp / (1000 / 60)) % 25 == 0)
 				{
-					hungry = hungry > 0 ? hungry - 1 : 0;
+					hungry = hungry > 0 ? hungry - 2 : 0;
 					health = health > 0 ? health - 1 : 0;
 					fun = fun > 0 ? fun - 1 : 0;
-					energy = energy > 0 ? energy - 1 : 0;
+					energy = energy > 0 ? energy - 3 : 0;
 				}
 
 				update();
@@ -173,6 +173,75 @@
 					}
 				}
 			}
+
+			let eat = document.getElementById('eat');
+			eat.addEventListener('click', () =>
+			{
+				if(hungry < 100)
+				{
+					hungry += 10;
+					health += 2;
+					fun = 100;
+					energy += 3;
+					eat.setAttribute('disabled', '');
+
+					setTimeout(() =>
+					{
+						eat.removeAttribute('disabled');
+					}, 5000);
+				}
+			}, false);
+
+			let play = document.getElementById('play')
+			play.addEventListener('click', () =>
+			{
+				if(fun < 100)
+				{
+					fun += 10;
+					health += 2;
+					energy += 3;
+					play.setAttribute('disabled', '');
+
+					setTimeout(() =>
+					{
+						play.removeAttribute('disabled');
+					}, 5000);
+				}
+			}, false);
+
+			let sleep = document.getElementById('sleep')
+			sleep.addEventListener('click', () =>
+			{
+				if(energy < 100)
+				{
+					energy += 10;
+					health += 1;
+					fun += 2;
+					sleep.setAttribute('disabled', '');
+
+					setTimeout(() =>
+					{
+						sleep.removeAttribute('disabled');
+					}, 5000);
+				}
+			}, false);
+
+			let heal = document.getElementById('heal')
+			heal.addEventListener('click', () =>
+			{
+				if(health < 100)
+				{
+					health += 10;
+					fun += 2;
+					energy += 3;
+					heal.setAttribute('disabled', '');
+
+					setTimeout(() =>
+					{
+						heal.removeAttribute('disabled');
+					}, 5000);
+				}
+			}, false);
 		</script>
 	</body>
 </html>
