@@ -91,11 +91,28 @@
 
 			function loop(timestamp)
 			{
-				console.log(Math.floor(timestamp) % 10);
+				update();
 				requestAnimationFrame(loop);
 			}
 
+			let hungry = 100;
+			let health = 100;
+			let fun = 100;
+			let energy = 100;
 
+			function update()
+			{
+				cv.width = cv.width;
+				cv.height = cv.height;
+
+				ctx.drawImage(face, 0, 0);
+
+				if(hungry == 100 && health == 100 && fun == 100 && energy == 100)
+				{
+					ctx.drawImage(eExcited, 0, 0);
+					ctx.drawImage(mExited, 0, 0);
+				}
+			}
 		</script>
 	</body>
 </html>
